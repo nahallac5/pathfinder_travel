@@ -7,12 +7,16 @@ class Travel:
         self.totalDistance    = int(dist)
         self.distanceTraveled = 0
         self.daysTraveled     = 0
+        # Event Sets
+        self.weather = ""
         # Flag for program completion
         self.travelcomplete   = 0
         
     # Move forward and see if encounter triggers
     def action(self):
         incriment = input(f"Day {self.daysTraveled} of travel. Distance traveled today (miles): ")
+        self.RandWeather()
+        print(f"Weather Today: {self.weather}")
         # Add distance for the day
         self.distanceTraveled += int(incriment)
         # Check for exit condition
@@ -46,15 +50,19 @@ class Travel:
                 print(f"Day {self.daysTraveled} passes by uneventfully.")
             # Incriment days
             self.daysTraveled += 1
+    
+    def RandWeather(self):
+        pass
+        
+        
                 
-            
 
 def main():
     # Run on open
     travelDone = 0
-    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print("Welcome to the Pathfinder Travel Tool (v0.1).")
-    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
     # Set up trip
     trip = Travel(travelDistInput())
     
