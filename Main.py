@@ -7,8 +7,11 @@ class Travel:
         self.totalDistance    = int(dist)
         self.distanceTraveled = 0
         self.daysTraveled     = 0
+        self.numEvents        = 0
         # Event Sets
-        self.weather = ""
+        self.weather = {"season": "spring",
+                        "temperature": 60,
+                        }
         # Flag for program completion
         self.travelcomplete   = 0
         
@@ -16,7 +19,7 @@ class Travel:
     def action(self):
         incriment = input(f"Day {self.daysTraveled} of travel. Distance traveled today (miles): ")
         self.RandWeather()
-        print(f"Weather Today: {self.weather}")
+        print(f"Weather Today: {self.weather['temperature']}F")
         # Add distance for the day
         self.distanceTraveled += int(incriment)
         # Check for exit condition
@@ -26,7 +29,7 @@ class Travel:
         # Check for event
         else:
             encounterSeed = random.randrange(100)
-            if encounterSeed <= 30:
+            if encounterSeed <= (50 - 10 * self.numEvents):
                 # Picks a random event from the roadside encounters
                 eventApprove = 0
                 while eventApprove == 0:
@@ -46,6 +49,7 @@ class Travel:
                     eventInquery = input("Approve? (y/n): ")
                     if (eventInquery == "y"):
                         eventApprove = 1
+                        self.numEvents += 1
             else:
                 print(f"Day {self.daysTraveled} passes by uneventfully.")
             # Incriment days
@@ -54,8 +58,6 @@ class Travel:
     def RandWeather(self):
         pass
         
-        
-                
 
 def main():
     # Run on open
